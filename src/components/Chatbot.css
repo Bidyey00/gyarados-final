@@ -1,0 +1,154 @@
+.gyarados-chatbot {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.gyarados-chat-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: #0f3d6e;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 24px #0f3d6e35;
+}
+
+.gyarados-chat-window {
+  position: fixed;
+  right: 24px;
+  bottom: 88px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: min(390px, calc(100vw - 32px));
+  height: min(550px, calc(100dvh - 120px));
+  overflow: hidden;
+  border: 1px solid #dce4ee;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 15px 50px #102b4b30;
+}
+
+.gyarados-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  background: #0f3d6e;
+  color: white;
+}
+
+.gyarados-chat-header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.gyarados-chat-header button {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.gyarados-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f5f8fc;
+}
+
+.gyarados-message {
+  width: fit-content;
+  max-width: 90%;
+  margin-bottom: 12px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.gyarados-message.assistant {
+  background: white;
+  border: 1px solid #e1e7ef;
+  color: #20334a;
+}
+
+.gyarados-message.user {
+  margin-left: auto;
+  background: #0f3d6e;
+  color: white;
+}
+
+.gyarados-book-result {
+  margin: 8px 0 14px;
+  padding: 14px;
+  border: 1px solid #dce4ee;
+  border-radius: 12px;
+  background: white;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.gyarados-book-result p {
+  color: #536579;
+  line-height: 1.5;
+}
+
+.gyarados-book-result small {
+  color: #0f3d6e;
+  font-weight: 600;
+}
+
+.gyarados-chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #e1e7ef;
+  background: white;
+}
+
+.gyarados-chat-form input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #d5deea;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 13px;
+}
+
+.gyarados-chat-form button {
+  padding: 10px 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #0f3d6e;
+  color: white;
+  cursor: pointer;
+}
+
+.gyarados-chat-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .gyarados-chat-toggle {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .gyarados-chat-window {
+    right: 16px;
+    bottom: 76px;
+  }
+}

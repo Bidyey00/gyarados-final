@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply bg-shelf text-ink font-sans antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight text-navy; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-teal; outline-style: solid; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-navy text-white hover:bg-navy-700; }
+  .btn-accent { @apply btn bg-saffron text-navy hover:bg-saffron-600; }
+  .btn-ghost { @apply btn border border-line bg-white text-ink hover:bg-shelf; }
+  .btn-danger { @apply btn border border-brick/30 bg-white text-brick hover:bg-brick-50; }
+  .input { @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm placeholder:text-ink-mute; }
+  .panel { @apply rounded-xl border border-line bg-white; }
+  .chip { @apply inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-sm text-ink-soft transition-colors hover:border-navy/40; }
+  .chip-on { @apply border-navy bg-navy text-white hover:border-navy; }
+  .badge { @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium; }
+}
+
+/* Book cover: a hard spine on the left edge, like a real hardback */
+.cover {
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,.28) 0, rgba(0,0,0,.28) 6px, rgba(255,255,255,.18) 6px, rgba(255,255,255,.18) 8px, transparent 8px);
+}
+
+/* The one orchestrated moment: books settle onto the shelf on first load */
+@keyframes settle { from { opacity: 0; transform: translateY(10px) rotate(-.6deg); } to { opacity: 1; transform: none; } }
+.settle > * { animation: settle .5s cubic-bezier(.2,.7,.2,1) both; }
+.settle > *:nth-child(2) { animation-delay: .05s; }
+.settle > *:nth-child(3) { animation-delay: .1s; }
+.settle > *:nth-child(4) { animation-delay: .15s; }
+.settle > *:nth-child(5) { animation-delay: .2s; }
+.settle > *:nth-child(6) { animation-delay: .25s; }
+.settle > *:nth-child(n+7) { animation-delay: .3s; }
+
+@keyframes slide-in { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.slide-in { animation: slide-in .22s ease-out both; }
+
+@keyframes pulse-soft { 50% { opacity: .55; } }
+.skeleton { @apply rounded-lg bg-line; animation: pulse-soft 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .settle > *, .slide-in, .skeleton { animation: none !important; }
+}
+
+
+/* Photo texture sits beneath the original blue gradient, so the brand colour stays dominant. */
+.auth-visual::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(125deg, rgba(10,45,82,.88), rgba(15,61,110,.78) 48%, rgba(11,121,184,.70)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1800&q=85');
+  background-size: cover; background-position: center; opacity: 1;
+}
+.auth-visual > * { position: relative; z-index: 1; }
+.auth-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(10,45,82,.35), transparent 65%); }
+.auth-visual > * { z-index: 2; }
+.dashboard-hero { background-image: linear-gradient(105deg, rgba(10,45,82,.94), rgba(15,61,110,.86) 55%, rgba(11,121,184,.78)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1800&q=85'); background-size: cover; background-position: center; }

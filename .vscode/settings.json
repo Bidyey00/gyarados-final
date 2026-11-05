@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "dist/**/*.css": "plaintext"
+  },
+  "deno.enable": true,
+  "deno.enablePaths": [
+    "supabase/functions"
+  ]
+}
