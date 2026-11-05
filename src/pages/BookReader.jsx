@@ -163,11 +163,44 @@ export default function BookReader() {
           aria-label="Loading the book"
         />
       ) : (
-        <iframe
-          title={`${title} (PDF)`}
-          src={pdf.src}
-          className="panel h-[calc(100vh-15rem)] min-h-[480px] w-full"
-        />
+        <>
+          {/* Mobile PDF Reader */}
+          <div className="panel p-6 text-center space-y-4 md:hidden">
+            <h2 className="text-xl font-bold">
+              Read your book
+            </h2>
+
+            <p className="text-sm text-gray-600">
+              For the best reading experience on mobile,
+              open or download the PDF using your phone's PDF reader.
+            </p>
+
+            <a
+              href={pdf.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center justify-center"
+            >
+              Open PDF
+            </a>
+
+            <a
+              href={pdf.downloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost inline-flex items-center justify-center ml-2"
+            >
+              Download PDF
+            </a>
+          </div>
+
+          {/* Desktop PDF Reader */}
+          <iframe
+            title={`${title} (PDF)`}
+            src={pdf.src}
+            className="panel hidden md:block h-[calc(100vh-15rem)] min-h-[480px] w-full"
+          />
+        </>
       )}
     </div>
   );
